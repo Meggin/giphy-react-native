@@ -23,4 +23,4 @@ For now, I am switching to my final project, as this is the most important focus
 Code is messy-- naming isn't great, comments aren't great, etc. 
 
 Know this isn't my best work-- but I'm juggling all kinds of things at the moment,
-and I just wanted to get this to a place that I could move on to the final project!@
+and I just wanted to get this to a place that I could move on to the final project!
