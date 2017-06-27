@@ -16,10 +16,9 @@ import {
 } from 'react-native';
 
 import SearchResults from './SearchResults.js';
-import popcornImg from './popcorn.png';
 
 export default class AwesomeProject extends Component {
-  // We are setting the initial state of this.state.movie to ''.
+  // We are setting the initial state of this.state.topic to ''.
   constructor(props) {
     super(props);
     this.state = {
@@ -61,8 +60,6 @@ export default class AwesomeProject extends Component {
           {/* The Search term is passed into the SearchResults component as props. */}
           <SearchResults topic={this.state.topic} searchResults={this.state.searchResults} />
         </View>
-        <View style={styles.footer} />
-        <Image source={popcornImg} style={styles.icon} />
       </View>
     );
   }
@@ -77,7 +74,7 @@ const styles = StyleSheet.create({
   },
   header: {
     height: 60,
-    backgroundColor: 'rgba(76,217,175,1)',
+    backgroundColor: 'rgba(0,0,0,1)',
     marginBottom: 5,
     shadowColor: "#000000",
     shadowOpacity: 0.8,
@@ -95,11 +92,11 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   input: {
-    color: 'white',
+    color: 'black',
     margin: 10,
     height: 45,
     paddingLeft: 10,
-    backgroundColor: 'rgba(76,217,175,1)',
+    backgroundColor: 'rgba(0,0,0,0)',
     fontSize: 18,
     shadowColor: "#000000",
     shadowOpacity: 0.8,
@@ -108,20 +105,6 @@ const styles = StyleSheet.create({
       height: 1,
       width: 0
     },
-  },
-  footer: {
-    position: 'absolute',
-    bottom: 0,
-    height: 50,
-    width: screenWidth,
-    backgroundColor: 'rgba(76,217,175,1)',
-  },
-  icon: {
-    width: 90,
-    height: 90,
-    position: 'absolute',
-    left: (screenWidth / 2 - 45),
-    bottom: 0,
   }
 });
 
