@@ -5,7 +5,8 @@ import {
   Text,
   View,
   StyleSheet,
-  Image
+  Image,
+  Dimensions
 } from 'react-native';
 
 class SearchResults extends Component {
@@ -31,7 +32,7 @@ class SearchResults extends Component {
   // The fetchData function makes an AJAX call to Giphy API.
   fetchData(topic) {
     // We pass the topic the user entered in into the URL for the API call.
-    fetch('https://api.giphy.com/v1/gifs/search?q=" + topic  + "&limit=5&api_key=dc6zaTOxFJmzC')
+    fetch('https://api.giphy.com/v1/gifs/search?q=" + topic  + "&limit=5&api_key=dc6zaTOxFJmzC&rating=g')
     .then(response => response.json())
     .then((responseData) => {
       console.log("Response data: " + responseData);
@@ -46,11 +47,11 @@ class SearchResults extends Component {
   viewGiphyImages() {
     return this.state.searchResults.map(function(result, i) {
       return (
-        <View key={i}>
+        <View style={styles.horizontal} key={i}>
           <Image
-            style={{width: 100, height: 45}}
-            source={{uri: result.images.fixed_width_small.url}}
-          />
+            style={styles.stretch}
+            source={{uri: result.images.fixed_width.url}}>
+          </Image>
         </View>
       );
     });
@@ -62,26 +63,8 @@ class SearchResults extends Component {
     if (this.state.searchResults != "") {
 
       return (
-        <View style={styles.item}>
+        <View>
           {this.viewGiphyImages()}
-          <Image
-            style={{width: 50, height: 50}}
-            source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
-          />
-          <Text style={styles.txt}>
-            <Text style={{ fontWeight: 'bold' }}>
-              Title:
-            </Text>
-              {this.state.searchResults[0].url}
-            {"\n"}
-          </Text>
-          <Text style={styles.txt}>
-            <Text style={{ fontWeight: 'bold'}}>
-              Year:
-            </Text>
-              {this.state.searchResults[0].rating}
-            {"\n"}
-          </Text>
         </View>
       );
 
@@ -92,7 +75,7 @@ class SearchResults extends Component {
         <Text style={styles.txt}>
           <Text style={{
             fontWeight: 'bold',
-            color: 'white',
+            color: 'black',
             textAlign: 'center',
             fontSize: 18
           }}
@@ -105,15 +88,23 @@ class SearchResults extends Component {
   }
 }
 
-
 const styles = StyleSheet.create({
+
+  horizontal: {
+    flexDirection: 'row'
+  },
+  stretch: {
+    width: 300,
+    height: 300,
+    margin: 5
+  },
   txt: {
     fontSize: 16,
     color: 'white'
   },
   item: {
     margin: 10,
-    backgroundColor: 'rgba(76,217,175,1)',
+    backgroundColor: 'rgba(0,0,0,0)',
     padding: 10,
     shadowColor: "#000000",
     shadowOpacity: 0.8,
