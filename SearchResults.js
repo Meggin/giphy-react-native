@@ -1,4 +1,4 @@
-// Similar to movie search, a search for nytimes articles.
+// Search for giphs.
 
 import React, { Component } from 'react';
 import {
@@ -11,7 +11,7 @@ import {
 
 class SearchResults extends Component {
 
-  // We are setting the initial state of this.state.movie to ''.
+  // We are setting the initial state of this.state.topic to ''.
   constructor(props) {
     super(props);
     this.state = {
