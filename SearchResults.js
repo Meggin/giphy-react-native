@@ -37,19 +37,33 @@ class SearchResults extends Component {
       console.log("Response data: " + responseData);
       var giphyArray = responseData.data
       console.log("The array of giphs: " + giphyArray);
+      console.log("Show me image url: " + giphyArray[0].images.fixed_width_small.url);
       this.setState({ searchResults: giphyArray });
     })
     .catch(err => console.log(err));
   }
 
-  render() {
+  viewGiphyImages() {
+    return this.state.searchResults.map(function(result, i) {
+      return (
+        <View key={i}>
+          <Image
+            style={{width: 100, height: 45}}
+            source={{uri: result.images.fixed_width_small.url}}
+          />
+        </View>
+      );
+    });
+  }
 
-    const giphyList = this.state.searchResults.map((data) => {})
+  render() {
 
     // If we have recieved search results, display this:
     if (this.state.searchResults != "") {
+
       return (
         <View style={styles.item}>
+          {this.viewGiphyImages()}
           <Image
             style={{width: 50, height: 50}}
             source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
